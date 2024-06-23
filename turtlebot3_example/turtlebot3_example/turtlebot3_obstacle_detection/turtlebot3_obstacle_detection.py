@@ -83,7 +83,7 @@ class Turtlebot3ObstacleDetection(Node):
     def detect_obstacle(self):
         twist = Twist()
         obstacle_distance = min(self.scan_ranges)
-        safety_distance = 0.3  # unit: m
+        safety_distance = 0.1  # unit: m
 
         if obstacle_distance > safety_distance:
             twist.linear.x = self.linear_velocity

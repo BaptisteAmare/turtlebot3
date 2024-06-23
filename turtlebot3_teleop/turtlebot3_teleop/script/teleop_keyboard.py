@@ -48,7 +48,7 @@ else:
     import termios
     import tty
 
-BURGER_MAX_LIN_VEL = 0.22
+BURGER_MAX_LIN_VEL = 0.5
 BURGER_MAX_ANG_VEL = 2.84
 
 WAFFLE_MAX_LIN_VEL = 0.26
@@ -57,14 +57,14 @@ WAFFLE_MAX_ANG_VEL = 1.82
 LIN_VEL_STEP_SIZE = 0.01
 ANG_VEL_STEP_SIZE = 0.1
 
-TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
+TURTLEBOT3_MODEL = 'burger'
 
 msg = """
 Control Your TurtleBot3!
 ---------------------------
 Moving around:
-        w
-   a    s    d
+        z
+   q    s    d
         x
 
 w/x : increase/decrease linear velocity (Burger : ~ 0.22, Waffle and Waffle Pi : ~ 0.26)
@@ -157,7 +157,7 @@ def main():
         print(msg)
         while(1):
             key = get_key(settings)
-            if key == 'w':
+            if key == 'z':
                 target_linear_velocity =\
                     check_linear_limit_velocity(target_linear_velocity + LIN_VEL_STEP_SIZE)
                 status = status + 1
@@ -167,7 +167,7 @@ def main():
                     check_linear_limit_velocity(target_linear_velocity - LIN_VEL_STEP_SIZE)
                 status = status + 1
                 print_vels(target_linear_velocity, target_angular_velocity)
-            elif key == 'a':
+            elif key == 'q':
                 target_angular_velocity =\
                     check_angular_limit_velocity(target_angular_velocity + ANG_VEL_STEP_SIZE)
                 status = status + 1
